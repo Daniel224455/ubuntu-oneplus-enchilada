@@ -23,9 +23,9 @@ mount --bind /proc rootdir/proc
 mount --bind /sys rootdir/sys
 
 echo "nameserver 1.1.1.1" | tee rootdir/etc/resolv.conf
-echo "xiaomi-nabu" | tee rootdir/etc/hostname
+echo "oneplus-enchilada" | tee rootdir/etc/hostname
 echo "127.0.0.1 localhost
-127.0.1.1 xiaomi-nabu" | tee rootdir/etc/hosts
+127.0.1.1 oneplus-enchilada" | tee rootdir/etc/hosts
 
 if uname -m | grep -q aarch64
 then
@@ -60,11 +60,11 @@ chroot rootdir apt install -y rmtfs protection-domain-mapper tqftpserv
 #Remove check for "*-laptop"
 sed -i '/ConditionKernelVersion/d' rootdir/lib/systemd/system/pd-mapper.service
 
-cp /home/runner/work/ubuntu-xiaomi-nabu/ubuntu-xiaomi-nabu/xiaomi-nabu-debs_$2/*-xiaomi-nabu.deb rootdir/tmp/
-chroot rootdir dpkg -i /tmp/linux-xiaomi-nabu.deb
-chroot rootdir dpkg -i /tmp/firmware-xiaomi-nabu.deb
-chroot rootdir dpkg -i /tmp/alsa-xiaomi-nabu.deb
-rm rootdir/tmp/*-xiaomi-nabu.deb
+cp /home/runner/work/ubuntu-oneplus-enchilada/ubuntu-oneplus-enchilada/oneplus-enchilada-debs_$2/*-oneplus-enchilada.deb rootdir/tmp/
+chroot rootdir dpkg -i /tmp/linux-oneplus-enchilada.deb
+chroot rootdir dpkg -i /tmp/firmware-oneplus-enchilada.deb
+chroot rootdir dpkg -i /tmp/alsa-oneplus-enchilada.deb
+rm rootdir/tmp/*-oneplus-enchilada.deb
 
 
 #EFI
